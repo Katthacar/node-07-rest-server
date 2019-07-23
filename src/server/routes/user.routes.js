@@ -1,12 +1,13 @@
 const express = require('express');
-const app = express();
-
 const bcrypt = require('bcrypt');
 const _ = require('underscore');
 
-const User = require('./../models/user.model');
+const User = require('../models/user.model');
+const { validToken, validAdminRole } = require('../middlewares/authentication');
 
-app.get('/users', (req, res) => {
+const app = express();
+
+app.get('/users', validToken, (req, res) => {
   const from = Number(req.query.from || 0);
   const to = Number(req.query.to || 5);
   const status = req.query.status || true;
@@ -28,7 +29,7 @@ app.get('/users', (req, res) => {
     })
 })
 
-app.post('/users', (req, res) => {
+app.post('/users', [validToken, validAdminRole], (req, res) => {
   let body = req.body;
   let user = new User({
     name: body.name,
@@ -49,7 +50,7 @@ app.post('/users', (req, res) => {
   });
 })
 
-app.put('/users/:id', (req, res) => {
+app.put('/users/:id', [validToken, validAdminRole], (req, res) => {
   let id = req.params.id;
   let body = _.pick(req.body, ['name', 'email', 'img', 'role', 'status']);
   User.findByIdAndUpdate(id, body, { new: true, runValidators: true }, (err, userDB) => {
@@ -64,7 +65,7 @@ app.put('/users/:id', (req, res) => {
   })
 })
 
-app.delete('/users/:id', (req, res) => {
+app.delete('/users/:id', [validToken, validAdminRole], (req, res) => {
   const id = req.params.id;
   const newUser = { status: false };
   User.findByIdAndUpdate(id, newUser, { new: true }, (err, user) => {
