@@ -8,4 +8,4 @@ mongoose.connect(URI, { useNewUrlParser: true, useCreateIndex: true, useFindAndM
 
 const connection = mongoose.connection;
 
-connection.once('open', () => console.log('Database is Connected!'));
+connection.once('open', () => console.log('Database Connected successful!'));
