@@ -1,11 +1,13 @@
-require('./config/config');
+import { MONGODB_URI } from './config/config';
 
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
-const URI = process.env.MONGO_URI;
-
-mongoose.connect(URI, { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false });
+mongoose.connect(MONGODB_URI,
+  { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false });
 
 const connection = mongoose.connection;
 
-connection.once('open', () => console.log('Database Connected successful!'));
+connection.once('open', () => console.log('Database Connected successful!'))
+  .on('error', (error) => console.log(`ERROR => ${error}`));
+
+export default connection;

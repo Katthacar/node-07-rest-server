@@ -1,22 +1,24 @@
-require('./config/config');
+import express from 'express';
 
-const express = require('express');
+import { PORT } from './config/config';
+import bodyapp from './middlewares/bodyParser';
+import router from './routes';
 
-const app = express();
+const server = express();
 
 /**
  * SETTINGS
  */
-app.set('port', process.env.PORT);
+server.set('port', PORT);
 
 /**
  * MIDDLEWARES
  */
-app.use(require('./middlewares/bodyParser.middle'));
+server.use(bodyapp);
 
 /**
  * ROUTES
  */
-app.use('/rest-server/api', require('./routes'));
+server.use('/rest-server/api', router);
 
-module.exports = app;
+export default server;

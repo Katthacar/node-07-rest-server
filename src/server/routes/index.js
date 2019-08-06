@@ -1,7 +1,11 @@
-const express = require('express');
-const app = express();
+import {Router} from 'express';
 
-app.use(require('./login.routes'));
-app.use(require('./user.routes'));
+import loginRouter from './login.routes';
+import userRouter from './user.routes';
 
-module.exports = app;
+const router = Router();
+
+router.use(loginRouter);
+router.use(userRouter);
+
+export default router;

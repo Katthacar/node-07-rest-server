@@ -1,14 +1,8 @@
-const express = require('express');
-const bcrypt = require('bcrypt');
-const _ = require('underscore');
+import { Router } from 'express';
+import { validToken, validAdminRole } from '../middlewares/authentication';
 
-const Category = require('../models/category.model');
-const { validToken, validAdminRole } = require('../middlewares/authentication');
+const categoryRouter = Router();
 
-const app = express();
+categoryRouter.route('/')
 
-app.get('/', (req, res) => {
-
-});
-
-module.exports = app;
+export default categoryRouter;

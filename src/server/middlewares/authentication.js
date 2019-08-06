@@ -1,12 +1,14 @@
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
+
+import {TOKEN_SEED} from './../config/config';
 
 /**
- * Valid token
+ * Valid TOKEN
  */
 const validToken = async (req, res, next) => {
   const token = req.get('Authorization');
   try {
-    const decoded = await jwt.verify(token, process.env.TOKEN_SEED);
+    const decoded = await jwt.verify(token, TOKEN_SEED);
     req.user = decoded.user;
     next();
   } catch (error) {
@@ -20,16 +22,17 @@ const validToken = async (req, res, next) => {
 const validAdminRole = (req, res, next) => {
   const user = req.user;
   if (user.role !== 'ADMIN_ROLE') {
-    return res.json({
-      error: true,
-      err: {
-        message: 'Usuario no está autorizado para la operación'
+    return res.status(401).json({
+      status: 'error',
+      error: {
+        message: 'Usuario no autorizado'
       }
     });
   }
   next();
 }
 
-module.exports = {
-  validToken, validAdminRole
+export {
+  validToken,
+  validAdminRole
 }
