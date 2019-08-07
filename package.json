@@ -5,16 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/index",
-    "dev": "nodemon src/index --exec babel-node"
+    "build": "babel src/ -d dist/",
+    "dev": "nodemon --exec babel-node src/index",
+    "start": "node dist/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-3": "^6.24.1",
+    "@babel/polyfill": "^7.4.4",
+    "babel-polyfill": "^6.26.0",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
@@ -26,6 +26,9 @@
     "underscore": "^1.9.1"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
     "nodemon": "^1.19.1"
   }
 }
