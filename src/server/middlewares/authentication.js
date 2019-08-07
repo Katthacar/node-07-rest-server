@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-import {TOKEN_SEED} from './../config/config';
+import { TOKEN_SEED } from './../config/config';
 
 /**
  * Valid TOKEN
@@ -8,11 +8,12 @@ import {TOKEN_SEED} from './../config/config';
 const validToken = async (req, res, next) => {
   const token = req.get('Authorization');
   try {
-    const decoded = await jwt.verify(token, TOKEN_SEED);
-    req.user = decoded.user;
+    const payload = await jwt.verify(token, TOKEN_SEED);
+    req.user = payload.user;
     next();
   } catch (error) {
-    res.status(401).json({ status: 'error', error });
+    res.status(401)
+      .json({ status: 'error', error: { name: 'JsonWebTokenError', message: 'JWT debe ser proveído' } });
   }
 }
 
@@ -28,8 +29,8 @@ const validAdminRole = (req, res, next) => {
         message: 'Usuario no autorizado'
       }
     });
-  }
-  next();
+  } else
+    next();
 }
 
 export {
