@@ -25,7 +25,7 @@ var server = (0, _express2.default)();
 /**
  * SETTINGS
  */
-server.set('port', _config.PORT);
+server.set('port', _config.PORT || 3000);
 
 /**
  * MIDDLEWARES

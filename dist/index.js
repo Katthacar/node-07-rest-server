@@ -27,7 +27,6 @@ var main = function () {
   };
 }();
 
-
 var _server = require('./server/server');
 
 var _server2 = _interopRequireDefault(_server);

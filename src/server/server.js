@@ -9,7 +9,7 @@ const server = express();
 /**
  * SETTINGS
  */
-server.set('port', PORT);
+server.set('port', PORT || 3000);
 
 /**
  * MIDDLEWARES
