@@ -30,7 +30,7 @@ const TOKEN_SEED = process.env.TOKEN_SEED;
  * DATA BASE
  */
 const MONGODB_URI = process.env.NODE_ENV === 'dev' ?
-  'mongodb://localhost:27017/cafe' : process.env.MONGODB_URI;
+  'mongodb://localhost/cafe' : process.env.MONGODB_URI;
 process.env.MONGODB_URI = MONGODB_URI;
 
 module.exports = {
