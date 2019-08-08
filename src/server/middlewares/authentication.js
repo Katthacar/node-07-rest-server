@@ -1,6 +1,6 @@
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
 
-const { TOKEN_SEED } = require('./../config/config');
+import { TOKEN_SEED } from './../config/config';
 
 /**
  * Valid TOKEN
@@ -33,7 +33,7 @@ const validAdminRole = (req, res, next) => {
     next();
 }
 
-module.exports = {
+export {
   validToken,
   validAdminRole
 }

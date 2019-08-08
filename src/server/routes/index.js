@@ -1,11 +1,11 @@
-const { Router } = require('express');
+import { Router } from 'express';
 
-const loginRouter = require('./login.routes');
-const userRouter = require('./user.routes');
+import loginRouter from './login.routes';
+import userRouter from './user.routes';
 
 const router = Router();
 
 router.use(loginRouter);
 router.use(userRouter);
 
-module.exports = router;
+export default router;

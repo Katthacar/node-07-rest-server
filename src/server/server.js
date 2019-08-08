@@ -1,8 +1,8 @@
-const express = require('express');
+import express from 'express';
 
-const { PORT } = require('./config/config');
-const middle = require('./middlewares/bodyParser');
-const router = require('./routes');
+import { PORT } from './config/config';
+import bodyapp from './middlewares/bodyParser';
+import router from './routes';
 
 const server = express();
 
@@ -14,11 +14,11 @@ server.set('port', PORT || 3000);
 /**
  * MIDDLEWARES
  */
-server.use(middle);
+server.use(bodyapp);
 
 /**
  * ROUTES
  */
 server.use('/rest-server/api', router);
 
-module.exports = server;
+export default server;

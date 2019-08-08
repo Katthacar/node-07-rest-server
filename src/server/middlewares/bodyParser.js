@@ -1,14 +1,14 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
+import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
 
-const middle = express();
+const app = express();
 
 // parse application/x-www-form-urlencoded
-middle.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
-middle.use(bodyParser.json())
+app.use(bodyParser.json())
 // use cors for cross-origin
-middle.use(cors());
+app.use(cors());
 
-module.exports = middle;
+export default app;

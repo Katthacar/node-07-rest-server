@@ -1,5 +1,7 @@
-require('./server/database');
-const server = require('./server/server');
+import 'babel-polyfill';
+
+import server from './server/server';
+import './server/database';
 
 async function main() {
   await server.listen(server.get('port'));

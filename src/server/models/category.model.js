@@ -1,5 +1,5 @@
-const { Schema, model } = require( 'mongoose');
-const uniqueValidator = require( 'mongoose-unique-validator');
+import { Schema, model } from 'mongoose';
+import uniqueValidator from 'mongoose-unique-validator';
 
 const categorySchema = new Schema({
   name: {
@@ -11,4 +11,4 @@ const categorySchema = new Schema({
 
 categorySchema.plugin(uniqueValidator,
   { message: '{PATH} debe ser único', type: 'mongoose-unique-validator' });
-module.exports = model('category', categorySchema);
+export default model('category', categorySchema);

@@ -1,12 +1,23 @@
-import { Schema, model } from 'mongoose';
-import uniqueValidator from 'mongoose-unique-validator';
+'use strict';
 
-const VALID_ROLES = {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _mongoose = require('mongoose');
+
+var _mongooseUniqueValidator = require('mongoose-unique-validator');
+
+var _mongooseUniqueValidator2 = _interopRequireDefault(_mongooseUniqueValidator);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var VALID_ROLES = {
   values: ['ADMIN_ROLE', 'USER_ROLE'],
   message: '{VALUE} no es un rol válido'
 };
 
-let userSchema = new Schema({
+var userSchema = new _mongoose.Schema({
   name: {
     type: String,
     required: [true, 'El nombre es necesario']
@@ -41,6 +52,5 @@ let userSchema = new Schema({
 //   delete userObject.password;
 //   return userObject;
 // }
-userSchema.plugin(uniqueValidator,
-  { message: '{PATH} debe ser único', type: 'mongoose-unique-validator' });
-export default model('user', userSchema);
+userSchema.plugin(_mongooseUniqueValidator2.default, { message: '{PATH} debe ser único', type: 'mongoose-unique-validator' });
+exports.default = (0, _mongoose.model)('user', userSchema);

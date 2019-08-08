@@ -1,8 +1,8 @@
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
-const { TOKEN_SEED, TOKEN_EXPIRATION } = require('./../config/config');
-const User = require('../models/user.model');
+import { TOKEN_SEED, TOKEN_EXPIRATION } from './../config/config';
+import User from '../models/user.model';
 
 const loginCtrl = {}
 
@@ -30,4 +30,4 @@ loginCtrl.login = async (req, res) => {
   res.json({ status: 'ok', user: dbUser, token });
 }
 
-module.exports = loginCtrl;
+export default loginCtrl;
