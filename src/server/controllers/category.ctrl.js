@@ -1,10 +1,10 @@
-import bcrypt from 'bcrypt';
-import _ from 'underscore';
+const bcrypt = require('bcrypt');
+const _ = require('underscore');
 
-import Category from '../models/category.model';
+const Category = require('../models/category.model');
 
 const categoryCtrl = {}
 
 
 
-export default categoryCtrl;
+module.exports = categoryCtrl;

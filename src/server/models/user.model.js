@@ -1,5 +1,5 @@
-import { Schema, model } from 'mongoose';
-import uniqueValidator from 'mongoose-unique-validator';
+const { Schema, model } = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator');
 
 const VALID_ROLES = {
   values: ['ADMIN_ROLE', 'USER_ROLE'],
@@ -43,4 +43,4 @@ let userSchema = new Schema({
 // }
 userSchema.plugin(uniqueValidator,
   { message: '{PATH} debe ser único', type: 'mongoose-unique-validator' });
-export default model('user', userSchema);
+module.exports = model('user', userSchema);

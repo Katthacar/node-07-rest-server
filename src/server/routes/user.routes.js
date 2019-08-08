@@ -1,6 +1,6 @@
-import { Router } from 'express';
-import { validToken, validAdminRole } from '../middlewares/authentication';
-import userCtrl from './../controllers/user.ctrl';
+const { Router } = require('express');
+const { validToken, validAdminRole } = require('../middlewares/authentication');
+const userCtrl = require('./../controllers/user.ctrl');
 
 const userRouter = Router();
 
@@ -12,4 +12,4 @@ userRouter.route('/users/:id')
   .put([validToken, validAdminRole], userCtrl.updateUserById)
   .delete([validToken, validAdminRole], userCtrl.deleteUserById);
 
-export default userRouter;
+module.exports = userRouter;

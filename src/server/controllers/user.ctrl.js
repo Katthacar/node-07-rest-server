@@ -1,7 +1,7 @@
-import bcrypt from 'bcrypt';
-import _ from 'underscore';
+const bcrypt = require('bcrypt');
+const _ = require('underscore');
 
-import User from './../models/user.model';
+const User = require('./../models/user.model');
 
 const userCtrl = {};
 
@@ -61,4 +61,4 @@ userCtrl.deleteUserById = async (req, res) => {
   }
 }
 
-export default userCtrl;
+module.exports = userCtrl;
