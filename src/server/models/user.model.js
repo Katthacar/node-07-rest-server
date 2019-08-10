@@ -33,7 +33,7 @@ let userSchema = new Schema({
   google: {
     type: Boolean, default: false
   }
-});
+}, { timestamps: true });
 
 // userSchema.methods.toJSON = function () {
 //   let user = this;

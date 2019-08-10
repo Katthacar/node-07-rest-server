@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const { TOKEN_SEED, TOKEN_EXPIRATION } = require('./../config/config');
 const User = require('../models/user.model');
 
-const loginCtrl = {}
+const loginCtrl = {};
 
 loginCtrl.login = async (req, res) => {
   const body = req.body;

@@ -9,6 +9,7 @@ userRouter.route('/users')
   .post([validToken, validAdminRole], userCtrl.createUser);
 
 userRouter.route('/users/:id')
+  .get(validToken, userCtrl.getUserById)
   .put([validToken, validAdminRole], userCtrl.updateUserById)
   .delete([validToken, validAdminRole], userCtrl.deleteUserById);
 
