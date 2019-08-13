@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-const { TOKEN_SEED, TOKEN_EXPIRATION } = require('./../config/config');
+const { TOKEN_SEED, TOKEN_EXPIRATION } = require('../config/config');
 const User = require('../models/user.model');
 
 const loginCtrl = {};

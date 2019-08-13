@@ -1,7 +1,7 @@
 const { Router } = require('express');
 
 const { validToken, validAdminRole } = require('../middlewares/authentication');
-const categoryCtrl = require('./../controllers/category.ctrl');
+const categoryCtrl = require('./../controllers/categoryCtrl');
 
 const categoryRouter = Router();
 

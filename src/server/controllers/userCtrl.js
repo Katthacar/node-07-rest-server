@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const _ = require('underscore');
 
-const User = require('./../models/user.model');
+const User = require('../models/user.model');
 
 const userCtrl = {};
 

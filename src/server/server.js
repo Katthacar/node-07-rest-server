@@ -1,7 +1,7 @@
 const express = require('express');
 
 const { PORT } = require('./config/config');
-const middle = require('./middlewares/bodyParser');
+const appMiddlewares = require('./middlewares/app_middlewares');
 const router = require('./routes');
 
 const server = express();
@@ -14,7 +14,7 @@ server.set('port', PORT || 3000);
 /**
  * MIDDLEWARES
  */
-server.use(middle);
+server.use(appMiddlewares);
 
 /**
  * ROUTES

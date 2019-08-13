@@ -4,6 +4,7 @@ const uniqueValidator = require('mongoose-unique-validator');
 var productSchema = new Schema({
   name: { type: String, unique: true, required: [true, 'El nombre es necesario'] },
   unitPrice: { type: Number, required: [true, 'El precio únitario es necesario'] },
+  img: {type: String},
   description: { type: String, required: false },
   available: { type: Boolean, required: true, default: true },
   category: {
